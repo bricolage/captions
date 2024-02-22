@@ -5,7 +5,7 @@ module Captions
     VTT_HEADER = "WEBVTT"
 
     # VTT file comments/style section
-    VTT_METADATA = /^NOTE|^STYLE/
+    VTT_METADATA = /^NOTE|^STYLE|^Language:\s|^Kind:\s/
 
     # Auto Keyword used in Alignment
     AUTO_KEYWORD = "auto"
