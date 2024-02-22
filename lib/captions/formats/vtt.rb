@@ -43,6 +43,10 @@ module Captions
             cue.set_time(line[0], line[2])
             set_properties(cue, line[3..-1])
           elsif !meta_data_section and is_text?(line)
+            # Remove timestamp tags, e.g. "Hello <00:00:00.766><c>I </c><00:00:01.052><c>understand </c>"
+            line.gsub!(/<\d{2}:\d{2}:\d{2}.\d{3}>/, '')
+            # Remove <c> and </c> tags, e.g. "Hello <00:00:00.766><c>I </c><00:00:01.052><c>understand </c>"
+            line.gsub!(/<\/?c>/, '')
             cue.add_text(line)
           end
         end
